@@ -1,0 +1,13 @@
+[package]
+distribution = "2201.8.0"
+org = "ballerinax"
+name = "candid"
+version = "0.1.0"
+authors = ["Ballerina"]
+keywords = ["candid", "nonprofit", "philanthropy"]
+repository = "https://github.com/ballerina-platform/module-ballerinax-candid"
+icon = "icon.png"
+license = ["Apache-2.0"]
+
+[build-options]
+observabilityIncluded = true
