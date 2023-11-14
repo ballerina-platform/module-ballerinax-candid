@@ -3,16 +3,23 @@
 
 import ballerina/log;
 import ballerina/http;
+import ballerina/os;
 import ballerina/test;
 
-configurable ApiKeysConfig & readonly apiKeyConfig = ?;
-Client charityCheckPDFClient = check new Client(apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
+configurable string apiKey = os:getEnv("CHARITYCHECKPDF_API_KEY");
+
+const EIN = "13-1837418";
+
+ApiKeysConfig apiKeyConfig = {
+    subscriptionKey: apiKey
+};
+Client charityCheckPDF = check new Client(apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
 
 @test:Config {
     enable: false
 }
 function testCharitycheckpdf() returns error? {
-    log:printInfo("charityCheckPDFClient -> testCharitycheckpdf()");
-    http:Response result = check charityCheckPDFClient->/v1/pdf/["13-1837418"];
+    log:printInfo("charityCheckPDF -> testCharitycheckpdf()");
+    http:Response result = check charityCheckPDF->/v1/pdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }

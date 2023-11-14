@@ -1554,12 +1554,13 @@
                                  "type":"string",
                                  "description":"GuideStar seal levels.",
                                  "enum":[
-                                    "bronze",
-                                    "silver",
-                                    "gold",
-                                    "platinum"
+                                    "BRONZE",
+                                    "SILVER",
+                                    "GOLD",
+                                    "PLATINUM",
+                                    "NONE"
                                  ],
-                                 "example":"bronze"
+                                 "example":"BRONZE"
                               },
                               "public_report":{
                                  "type":"string",
@@ -1825,12 +1826,13 @@
                                  "type":"string",
                                  "description":"GuideStar seal levels.",
                                  "enum":[
-                                    "bronze",
-                                    "silver",
-                                    "gold",
-                                    "platinum"
+                                    "BRONZE",
+                                    "SILVER",
+                                    "GOLD",
+                                    "PLATINUM",
+                                    "NONE"
                                  ],
-                                 "example":"bronze"
+                                 "example":"BRONZE"
                               },
                               "public_report":{
                                  "type":"string",
@@ -2118,7 +2120,10 @@
                                  "example":"Support lead"
                               },
                               "number_of_employees":{
-                                 "type":"number",
+                                 "oneOf": [
+                                    { "type": "number" },
+                                    { "type": "string" }
+                                 ],
                                  "description":"Number of employees at the organization",
                                  "example":55
                               },
@@ -2238,7 +2243,10 @@
                                  "example":"NY"
                               },
                               "zip":{
-                                 "type":"number",
+                                 "oneOf": [
+                                    { "type": "number" },
+                                    { "type": "string" }
+                                 ],
                                  "description":"Zip code of the organization's address",
                                  "example":10005
                               },

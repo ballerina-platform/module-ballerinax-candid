@@ -297,18 +297,6 @@ modules = [
 ]
 
 [[package]]
-org = "ballerinai"
-name = "observe"
-version = "0.0.0"
-dependencies = [
-	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "observe"}
-]
-modules = [
-	{org = "ballerinai", packageName = "observe", moduleName = "observe"}
-]
-
-[[package]]
 org = "ballerinax"
 name = "candid"
 version = "0.1.0"
@@ -316,8 +304,7 @@ dependencies = [
 	{org = "ballerina", name = "http"},
 	{org = "ballerina", name = "log"},
 	{org = "ballerina", name = "test"},
-	{org = "ballerina", name = "url"},
-	{org = "ballerinai", name = "observe"}
+	{org = "ballerina", name = "url"}
 ]
 modules = [
 	{org = "ballerinax", packageName = "candid", moduleName = "candid"},

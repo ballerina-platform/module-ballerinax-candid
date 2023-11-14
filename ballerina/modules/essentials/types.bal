@@ -176,7 +176,7 @@ public type V3EssentialsResponse_geography record {
     # State (Abbreviation) of the organization's address
     string? state?;
     # Zip code of the organization's address
-    decimal? zip?;
+    decimal|string? zip?;
     # Metropolitan statistical area of the organization's adresss
     string? msa?;
     # Congressional district of the organization's address
@@ -301,7 +301,7 @@ public type V2EssentialsResponse_data_hits record {
     # National Taxonomy of Exempt Entities
     string? ntee_code?;
     # GuideStar seal levels.
-    "bronze"|"silver"|"gold"|"platinum" profile_level?;
+    "BRONZE"|"SILVER"|"GOLD"|"PLATINUM"|"NONE" profile_level?;
     # GuideStar's public profile URL
     string? public_report?;
     # IRS subsection code of the organization
@@ -587,7 +587,7 @@ public type V3EssentialsResponse_organization record {
     # Title of the primary contact at the organization
     string? contact_title?;
     # Number of employees at the organization
-    decimal? number_of_employees?;
+    decimal|string? number_of_employees?;
     # The year the IRS granted organization tax exempt status (a.k.a. Ruling Year)
     decimal? ruling_year?;
 };
@@ -631,7 +631,7 @@ public type V1EssentialsResponse_data_hits record {
     # National Taxonomy of Exempt Entities
     string? ntee_code?;
     # GuideStar seal levels.
-    "bronze"|"silver"|"gold"|"platinum" profile_level?;
+    "BRONZE"|"SILVER"|"GOLD"|"PLATINUM"|"NONE" profile_level?;
     # GuideStar's public profile URL
     string? public_report?;
     # IRS subsection code of the organization
