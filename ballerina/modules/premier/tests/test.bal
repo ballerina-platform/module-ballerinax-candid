@@ -15,27 +15,21 @@ ApiKeysConfig apiKeyConfig = {
 };
 Client premier = check new Client(apiKeyConfig, serviceUrl = "https://api.candid.org/premier");
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testPremierV1Propdf() returns error? {
     log:printInfo("premier -> testPremierV1Propdf()");
     http:Response result = check premier->/v1/propdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testPremierV1ftapdf() returns error? {
     log:printInfo("premier -> testPremierV1ftapdf()");
     http:Response result = check premier->/v1/ftapdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testPremierV3() returns error? {
     log:printInfo("premier -> testPremierV3()");
     V3PublicProfile result = check premier->/v3/[EIN];

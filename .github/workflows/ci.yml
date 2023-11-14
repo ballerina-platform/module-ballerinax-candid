@@ -17,3 +17,4 @@ jobs:
     with:
       repo-name: module-ballerinax-candid
       publish-required: 'true'
+      additional-test-flags: -x test

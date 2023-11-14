@@ -15,9 +15,7 @@ ApiKeysConfig apiKeyConfig = {
 };
 Client charityCheckPDF = check new Client(apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testCharitycheckpdf() returns error? {
     log:printInfo("charityCheckPDF -> testCharitycheckpdf()");
     http:Response result = check charityCheckPDF->/v1/pdf/[EIN];

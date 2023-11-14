@@ -16,9 +16,7 @@ ApiKeysConfig apiKeyConfig = {
 };
 Client essentials = check new Client(apiKeyConfig, serviceUrl = "https://api.candid.org/essentials");
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testEssentialsV1() returns error? {
     log:printInfo("essentials -> testEssentialsV1()");
     Query query = {
@@ -38,9 +36,7 @@ function testEssentialsV1() returns error? {
     }
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testEssentialsV2() returns error? {
     log:printInfo("essentials -> testEssentialsV2()");
     Query query = {
@@ -60,9 +56,7 @@ function testEssentialsV2() returns error? {
     }
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testEssentialsV3() returns error? {
     log:printInfo("essentials -> testEssentialsV3()");
     V3Query query = {
@@ -77,9 +71,7 @@ function testEssentialsV3() returns error? {
     }
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testEssentialsLookup() returns error? {
     log:printInfo("essentials -> testEssentialsLookup()");
     EssentialsLookupResponse result = check essentials->/lookup;
@@ -91,9 +83,7 @@ function testEssentialsLookup() returns error? {
     }
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function testEssentialsLookupFilterName() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterName()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME];
@@ -105,9 +95,7 @@ function testEssentialsLookupFilterName() returns error? {
     }
 }
 
-@test:Config {
-    enable: false
-}
+@test:Config
 function  testEssentialsLookupFilterNameKeyOrValue() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterNameKeyOrValue()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME]/[KEY_OR_VALUE];
