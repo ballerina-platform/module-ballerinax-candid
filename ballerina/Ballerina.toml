@@ -1,9 +1,9 @@
 [package]
 org = "ballerinax"
 name = "candid"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Ballerina"]
-export = ["candid.charitycheckpdf", "candid.essentials", "candid.premier"]
+export = ["candid", "candid.charitycheckpdf", "candid.essentials", "candid.premier"]
 keywords = ["Candid", "Nonprofit Data", "Philanthropy Data", "Nonprofit APIs"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-candid"
 icon = "icon.png"
