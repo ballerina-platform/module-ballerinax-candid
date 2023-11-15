@@ -1,10 +1,10 @@
 ## Overview
 
-Candid.org is a non-profit organization that provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Their mission is to connect people who want to change the world to the resources they need to do it.
+[Candid](https://candid.org/) is a non-profit organization that provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Their mission is to connect people who want to change the world to the resources they need to do it.
 
 The `ballerinax/candid` module provides APIs to allow to access Candid's database that includes information on over 2 million nonprofits, including their mission, programs, finances, and leadership. And also provides information on over 100,000 foundations and grantmakers, as well as data on individual philanthropists.
 
-Currently, the following Candid.org APIs are supported through this module
+Currently, the following Candid APIs are supported through this module
 
 - Charity Check PDF API
   - The Charity Check PDF API is a powerful tool that allows to download formatted Charity Check PDF reports for individual nonprofits.
