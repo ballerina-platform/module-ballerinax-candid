@@ -43,8 +43,10 @@ plugins {
 
 rootProject.name = 'module-ballerinax-candid'
 
+include ':checkstyle'
 include ':candid-ballerina'
 
+project(':checkstyle').projectDir = file("build-config${File.separator}checkstyle")
 project(':candid-ballerina').projectDir = file("ballerina")
 
 gradleEnterprise {
