@@ -43,7 +43,7 @@ essentials:Client essentials = check new essentials:Client(apiKeyConfig);
 
 function getV3Essesntials() returns essentials:V3EssentialsResponse|error {
     essentials:V3Query query = {
-        search_terms: "13-1837418"
+        search_terms: "candid"
     };
     essentials:V3EssentialsResponse|error result = essentials->/v3.post(query);
     return result;
@@ -60,7 +60,7 @@ import ballerinax/candid.premier;
 premier:ApiKeysConfig apiKeyConfig = {subscriptionKey: "ENTER-THE-SUBSCRIPTION-KEY"};
 premier:Client premier = check new premier:Client(apiKeyConfig);
 
-function getV3Premier() returns V3PublicProfile|error {
+function getV3Premier() returns premier:V3PublicProfile|error {
     premier:V3PublicProfile|error result = check premier->/v3/["EMP-ID-NUM"];
     return result;
 }
