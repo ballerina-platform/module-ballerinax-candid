@@ -1,7 +1,7 @@
 [package]
 org = "ballerinax"
 name = "candid"
-version = "0.2.0"
+version = "0.1.0"
 authors = ["Ballerina"]
 export = ["candid", "candid.charitycheckpdf", "candid.essentials", "candid.premier"]
 keywords = ["Candid", "Nonprofit Data", "Philanthropy Data", "Nonprofit APIs"]
