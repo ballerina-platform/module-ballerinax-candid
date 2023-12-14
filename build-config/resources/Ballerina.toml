@@ -8,4 +8,4 @@ keywords = ["Candid", "Nonprofit Data", "Philanthropy Data", "Nonprofit APIs"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-candid"
 icon = "icon.png"
 license = ["Apache-2.0"]
-distribution = "2201.8.0"
+distribution = "7.0"
