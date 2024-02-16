@@ -12,4 +12,4 @@ jobs:
     secrets: inherit
     with:
       repo-name: module-ballerinax-candid
-      additional-test-flags: -x test
+      additional-test-flags: -Pgroups=mock

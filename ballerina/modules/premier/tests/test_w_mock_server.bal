@@ -14,53 +14,53 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import candid.mock as _;
+
 import ballerina/log;
 import ballerina/http;
-import ballerina/os;
 import ballerina/test;
-
-configurable string apiKey = os:getEnv("PREMIER_API_KEY");
 
 const EIN = "13-1837418";
 
-ApiKeysConfig apiKeyConfig = {
-    subscriptionKey: apiKey
-};
-
-Client premier = test:mock(Client);
+Client premierMockServer = test:mock(Client);
 
 @test:BeforeGroups {
-    value: ["candid"]
+    value: ["mock"]
 }
-function initializeClientsForCandidServer() returns error? {
-    log:printInfo("Initializing client for Candid server");
-    premier = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/premier");
+function initializeClientsForMockServer() returns error? {
+    log:printInfo("Initializing client for mock server");
+    premierMockServer = check new (
+        apiKeyConfig = {
+            subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
+        },
+        serviceUrl = "http://localhost:9090/premier"
+    );
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testPremierV1Propdf() returns error? {
-    log:printInfo("premier -> testPremierV1Propdf()");
-    http:Response result = check premier->/v1/propdf/[EIN];
+function testPremierV1PropdfMock() returns error? {
+    log:printInfo("premierMockServer -> testPremierV1PropdfMock()");
+    http:Response result = check premierMockServer->/v1/propdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testPremierV1ftapdf() returns error? {
-    log:printInfo("premier -> testPremierV1ftapdf()");
-    http:Response result = check premier->/v1/ftapdf/[EIN];
+function testPremierV1ftapdfMock() returns error? {
+    log:printInfo("premierMockServer -> testPremierV1ftapdfMock()");
+    http:Response result = check premierMockServer->/v1/ftapdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testPremierV3() returns error? {
-    log:printInfo("premier -> testPremierV3()");
-    V3PublicProfile result = check premier->/v3/[EIN];
+function testPremierV3Mock() returns error? {
+    log:printInfo("premierMockServer -> testPremierV3Mock()");
+    V3PublicProfile result = check premierMockServer->/v3/[EIN];
     V3PublicProfile_data? data = result?.data;
     if data is V3PublicProfile_data {
         Summary3? summary = data?.summary;

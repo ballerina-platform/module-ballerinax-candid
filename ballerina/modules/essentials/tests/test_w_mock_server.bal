@@ -14,39 +14,39 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/log;
-import ballerina/os;
-import ballerina/test;
+import candid.mock as _;
 
-configurable string apiKey = os:getEnv("ESSENTIALS_API_KEY");
+import ballerina/log;
+import ballerina/test;
 
 const SEARCH_TERM = "candid";
 const FILTER_NAME = "ntee_major";
 const KEY_OR_VALUE = "C00";
 
-ApiKeysConfig apiKeyConfig = {
-    subscriptionKey: apiKey
-};
-
-Client essentials = test:mock(Client);
+Client essentialsMockServer = test:mock(Client);
 
 @test:BeforeGroups {
-    value: ["candid"]
+    value: ["mock"]
 }
-function initializeClientsForCandidServer() returns error? {
-    log:printInfo("Initializing client for Candid server");
-    essentials = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/essentials");
+function initializeClientsForMockServer() returns error? {
+    log:printInfo("Initializing client for mock server");
+    essentialsMockServer = check new (
+        apiKeyConfig = {
+            subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
+        },
+        serviceUrl = "http://localhost:9090/essentials"
+    );
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testEssentialsV1() returns error? {
-    log:printInfo("essentials -> testEssentialsV1()");
+function testEssentialsV1Mock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsV1Mock()");
     Query query = {
         search_terms: SEARCH_TERM
     };
-    V1EssentialsResponse result = check essentials->/v1.post(query);
+    V1EssentialsResponse result = check essentialsMockServer->/v1.post(query);
     V1EssentialsResponse_data? data = result?.data;
     if data is V1EssentialsResponse_data {
         V1EssentialsResponse_data_hits[]? hits = data?.hits;
@@ -61,14 +61,14 @@ function testEssentialsV1() returns error? {
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testEssentialsV2() returns error? {
-    log:printInfo("essentials -> testEssentialsV2()");
+function testEssentialsV2Mock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsV2Mock()");
     Query query = {
         search_terms: SEARCH_TERM
     };
-    V2EssentialsResponse result = check essentials->/v2.post(query);
+    V2EssentialsResponse result = check essentialsMockServer->/v2.post(query);
     V2EssentialsResponse_data? data = result?.data;
     if data is V2EssentialsResponse_data {
         V2EssentialsResponse_data_hits[]? hits = data?.hits;
@@ -83,14 +83,14 @@ function testEssentialsV2() returns error? {
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testEssentialsV3() returns error? {
-    log:printInfo("essentials -> testEssentialsV3()");
+function testEssentialsV3Mock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsV3Mock()");
     V3Query query = {
         search_terms: SEARCH_TERM
     };
-    V3EssentialsResponse result = check essentials->/v3.post(query);
+    V3EssentialsResponse result = check essentialsMockServer->/v3.post(query);
     V3EssentialsResponse_hits[]? hits = result?.hits;
     if hits is V3EssentialsResponse_hits[] {
         test:assertEquals(hits.length(), 25);
@@ -100,11 +100,11 @@ function testEssentialsV3() returns error? {
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testEssentialsLookup() returns error? {
-    log:printInfo("essentials -> testEssentialsLookup()");
-    EssentialsLookupResponse result = check essentials->/lookup;
+function testEssentialsLookupMock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsLookupMock()");
+    EssentialsLookupResponse result = check essentialsMockServer->/lookup;
     string[]? data = result?.data;
     if data is string[] {
         test:assertTrue(data.some(val => val == FILTER_NAME));
@@ -114,11 +114,11 @@ function testEssentialsLookup() returns error? {
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function testEssentialsLookupFilterName() returns error? {
-    log:printInfo("essentials -> testEssentialsLookupFilterName()");
-    EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME];
+function testEssentialsLookupFilterNameMock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsLookupFilterNameMock()");
+    EssentialsFilteredLookupResponse result = check essentialsMockServer->/lookup/[FILTER_NAME];
     EssentialsFilteredLookupResponse_data[]? data = result?.data;
     if data is EssentialsFilteredLookupResponse_data[] {
         test:assertTrue(data.some(val => val?.'key == KEY_OR_VALUE));
@@ -128,11 +128,11 @@ function testEssentialsLookupFilterName() returns error? {
 }
 
 @test:Config {
-    groups: ["candid"]
+    groups: ["mock"]
 }
-function  testEssentialsLookupFilterNameKeyOrValue() returns error? {
-    log:printInfo("essentials -> testEssentialsLookupFilterNameKeyOrValue()");
-    EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME]/[KEY_OR_VALUE];
+function  testEssentialsLookupFilterNameKeyOrValueMock() returns error? {
+    log:printInfo("essentialsMockServer -> testEssentialsLookupFilterNameKeyOrValueMock()");
+    EssentialsFilteredLookupResponse result = check essentialsMockServer->/lookup/[FILTER_NAME]/[KEY_OR_VALUE];
     EssentialsFilteredLookupResponse_data[]? data = result?.data;
     if data is EssentialsFilteredLookupResponse_data[] {
         test:assertTrue(data.some(val => val?.'key == KEY_OR_VALUE));
