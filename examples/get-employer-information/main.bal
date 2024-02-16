@@ -14,23 +14,18 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/log;
-import ballerina/http;
 import ballerina/os;
-import ballerina/test;
+import ballerinax/candid.premier;
 
-configurable string apiKey = os:getEnv("CHARITYCHECKPDF_API_KEY");
+configurable string subscriptionKey = os:getEnv("SUBSCRIPTION_KEY");
 
-const EIN = "13-1837418";
-
-ApiKeysConfig apiKeyConfig = {
-    subscriptionKey: apiKey
+// Candid API Key Configurations
+premier:ApiKeysConfig apiKeyConfig = {
+    subscriptionKey: subscriptionKey
 };
-Client charityCheckPDF = check new Client(apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
+premier:Client premier = check new (apiKeyConfig);
 
-@test:Config
-function testCharitycheckpdf() returns error? {
-    log:printInfo("charityCheckPDF -> testCharitycheckpdf()");
-    http:Response result = check charityCheckPDF->/v1/pdf/[EIN];
-    test:assertEquals(result.getContentType(), "application/pdf");
+function getV3Premier() returns premier:V3PublicProfile|error {
+    premier:V3PublicProfile|error result = check premier->/v3/["EMP-ID-NUM"];
+    return result;
 }

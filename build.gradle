@@ -33,10 +33,6 @@ allprojects {
         }
 
         maven {
-            url = 'https://mvnrepository.com/artifact/org.testng/testng'
-        }
-
-        maven {
             url = 'https://maven.wso2.org/nexus/content/groups/wso2-public/'
         }
 
@@ -61,18 +57,9 @@ allprojects {
 
 def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
-subprojects {
-    configurations {
-        ballerinaStdLibs
-        jbalTools
-    }
-
-    dependencies {
-    }
-}
-
 task build {
     dependsOn(':candid-ballerina:build')
+    dependsOn(':candid-examples:build')
 }
 
 release {

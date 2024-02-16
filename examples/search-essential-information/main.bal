@@ -14,23 +14,21 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/log;
-import ballerina/http;
 import ballerina/os;
-import ballerina/test;
+import ballerinax/candid.essentials;
 
-configurable string apiKey = os:getEnv("CHARITYCHECKPDF_API_KEY");
+configurable string subscriptionKey = os:getEnv("SUBSCRIPTION_KEY");
 
-const EIN = "13-1837418";
-
-ApiKeysConfig apiKeyConfig = {
-    subscriptionKey: apiKey
+// Candid API Key Configurations
+essentials:ApiKeysConfig apiKeyConfig = {
+    subscriptionKey: subscriptionKey
 };
-Client charityCheckPDF = check new Client(apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
+essentials:Client essentials = check new (apiKeyConfig);
 
-@test:Config
-function testCharitycheckpdf() returns error? {
-    log:printInfo("charityCheckPDF -> testCharitycheckpdf()");
-    http:Response result = check charityCheckPDF->/v1/pdf/[EIN];
-    test:assertEquals(result.getContentType(), "application/pdf");
+function getV3Essesntials() returns essentials:V3EssentialsResponse|error {
+    essentials:V3Query query = {
+        search_terms: "candid"
+    };
+    essentials:V3EssentialsResponse|error result = essentials->/v3.post(query);
+    return result;
 }
