@@ -3,7 +3,7 @@ name: Publish Release
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [ connector-release-pipeline ]
+    types: [ stdlib-release-pipeline ]
 
 jobs:
   call_workflow:
@@ -14,4 +14,6 @@ jobs:
     with:
       package-name: candid
       package-org: ballerinax
-      additional-release-flags: -x test
+      additional-build-flags: "-x :candid-examples:build"
+      additional-release-flags: "-x test -x :candid-examples:build"
+      additional-publish-flags: "-x :candid-examples:build"
