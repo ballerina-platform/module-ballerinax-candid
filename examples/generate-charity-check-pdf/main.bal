@@ -15,10 +15,9 @@
 // under the License.
 
 import ballerina/http;
-import ballerina/os;
 import ballerinax/candid.charitycheckpdf;
 
-configurable string subscriptionKey = os:getEnv("SUBSCRIPTION_KEY");
+configurable string subscriptionKey = ?;
 
 // Candid API Key Configurations
 charitycheckpdf:ApiKeysConfig apiKeyConfig = {
@@ -27,6 +26,6 @@ charitycheckpdf:ApiKeysConfig apiKeyConfig = {
 charitycheckpdf:Client charitycheckpdf = check new (apiKeyConfig);
 
 function getCharityCheckPDF() returns http:Response|error {
-    http:Response|error result = charitycheckpdf->/v1/pdf/["EMP-ID-NUM"];
+    http:Response result = check charitycheckpdf->/v1/pdf/["EMP-ID-NUM"];
     return result;
 }

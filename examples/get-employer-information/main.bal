@@ -14,10 +14,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/os;
 import ballerinax/candid.premier;
 
-configurable string subscriptionKey = os:getEnv("SUBSCRIPTION_KEY");
+configurable string subscriptionKey = ?;
 
 // Candid API Key Configurations
 premier:ApiKeysConfig apiKeyConfig = {
@@ -26,6 +25,6 @@ premier:ApiKeysConfig apiKeyConfig = {
 premier:Client premier = check new (apiKeyConfig);
 
 function getV3Premier() returns premier:V3PublicProfile|error {
-    premier:V3PublicProfile|error result = check premier->/v3/["EMP-ID-NUM"];
+    premier:V3PublicProfile result = check premier->/v3/["EMP-ID-NUM"];
     return result;
 }

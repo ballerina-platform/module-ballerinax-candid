@@ -14,10 +14,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/os;
 import ballerinax/candid.essentials;
 
-configurable string subscriptionKey = os:getEnv("SUBSCRIPTION_KEY");
+configurable string subscriptionKey = ?;
 
 // Candid API Key Configurations
 essentials:ApiKeysConfig apiKeyConfig = {
@@ -29,6 +28,6 @@ function getV3Essesntials() returns essentials:V3EssentialsResponse|error {
     essentials:V3Query query = {
         search_terms: "candid"
     };
-    essentials:V3EssentialsResponse|error result = essentials->/v3.post(query);
+    essentials:V3EssentialsResponse result = check essentials->/v3.post(query);
     return result;
 }

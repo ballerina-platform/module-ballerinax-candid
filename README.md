@@ -9,7 +9,7 @@
 
 [Candid](https://candid.org/) is a non-profit organization that provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Their mission is to connect people who want to change the world to the resources they need to do it.
 
-This Ballerina connector is designed to interface with Candid.org's API, enabling developers to access Candid's resources programmatically. It supports various operations, such as searching for nonprofit organizations, accessing grant data, and retrieving information about philanthropic trends and insights.
+This Ballerina Candid connector is designed to interface with Candid.org's API, enabling developers to access Candid's resources programmatically. It supports various operations, such as searching for nonprofit organizations, accessing grant data, and retrieving information about philanthropic trends and insights.
 
 Currently, the following Candid APIs are supported through this module
 
@@ -114,6 +114,12 @@ The following Ballerina program retrieves data on a nonprofit's financials, peop
 
 ```ballerina
 premier:V3PublicProfile|error result = check premier->/v3/["EMP-ID-NUM"];
+```
+
+### Step 4: Run the Ballerina application
+
+```bash
+bal run
 ```
 
 ## Examples
