@@ -13,14 +13,14 @@ Currently, the following Candid APIs are supported through this module
 - **Premier API**
   - The Premier API is a more comprehensive API that provides access to a wider range of nonprofit data, including financial information, staffing data, grantmaking data, and DEI data. It is ideal for applications that need to deep dive into the data of individual nonprofits or perform complex analyses of nonprofit data.
 
-## Setup Guide
+## Setup guide
 To use the Candid.org Connector in Ballerina, you must first obtain an API key from Candid.org.
 
-### Step 1: Visit Candid's Developer API Access page
+### Step 1: Visit Candid's developer API access page
 1. Visit [Candid's Developer API Access](https://developer.candid.org/reference/getting-access) page.
 2. Review the documentation to understand the type of access suits your need.
 
-### Step 2: Request API Access
+### Step 2: Request API access
 - **For a Trial Account:** If you're looking for trial access to explore Candid's API, complete the [form](https://info.candid.org/API-free-trial) to request trial access. Candid.org will review your request and get in touch with you regarding your trial API key.
 
     <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/master/docs/setup/resources/1-trial-account-form.png alt="Candid API Access Form" width="50%">

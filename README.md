@@ -2,7 +2,6 @@
 
 [![Build](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/ci.yml)
 [![Trivy](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/trivy-scan.yml)
-[![codecov](https://codecov.io/gh/ballerina-platform/module-ballerinax-candid/branch/master/graph/badge.svg)](https://codecov.io/gh/ballerina-platform/module-ballerinax-candid)
 [![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/build-with-bal-test-graalvm.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/build-with-bal-test-graalvm.yml)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-candid.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/commits/master)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/candid.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fcandid)
@@ -20,14 +19,14 @@ Currently, the following Candid APIs are supported through this module
 - **Premier API**
   - The Premier API is a more comprehensive API that provides access to a wider range of nonprofit data, including financial information, staffing data, grantmaking data, and DEI data. It is ideal for applications that need to deep dive into the data of individual nonprofits or perform complex analyses of nonprofit data.
 
-## Setup Guide
+## Setup guide
 To use the Candid.org Connector in Ballerina, you must first obtain an API key from Candid.org.
 
-### Step 1: Visit Candid's Developer API Access page
+### Step 1: Visit Candid's developer API access page
 1. Visit [Candid's Developer API Access](https://developer.candid.org/reference/getting-access) page.
 2. Review the documentation to understand the type of access suits your need.
 
-### Step 2: Request API Access
+### Step 2: Request API access
 - **For a Trial Account:** If you're looking for trial access to explore Candid's API, complete the [form](https://info.candid.org/API-free-trial) to request trial access. Candid.org will review your request and get in touch with you regarding your trial API key.
 
     <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/master/docs/setup/resources/1-trial-account-form.png alt="Candid API Access Form" width="50%">
