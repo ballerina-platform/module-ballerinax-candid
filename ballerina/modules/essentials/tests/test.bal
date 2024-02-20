@@ -40,12 +40,7 @@ function initializeClient() returns error? {
         essentials = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/essentials");
     } else {
         log:printInfo("Initializing client for mock server");
-        essentials = check new (
-            apiKeyConfig = {
-                subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
-            },
-            serviceUrl = "http://localhost:9090/essentials"
-        );
+        essentials = check new (apiKeyConfig, serviceUrl = "http://localhost:9090/essentials");
     }
 }
 

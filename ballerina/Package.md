@@ -124,12 +124,3 @@ The `Candid` connector provides practical examples illustrating usage in various
 2. [Search Essential Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples/search-essential-information) - Search for and retrieve essential information about nonprofit organizations through the Candid.org Essentials API.
 
 3. [Get Employer Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples/get-employer-information) - Obtain comprehensive employer information for nonprofit organizations using the Candid.org Premier API.
-
-## Report Issues
-
-To report bugs, request new features, start new discussions, view project boards, etc., go to the [Ballerina library parent repository](https://github.com/ballerina-platform/ballerina-library).
-
-## Useful Links
-
-- Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
-- Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.

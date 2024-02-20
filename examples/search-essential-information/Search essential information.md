@@ -1,4 +1,4 @@
-# Search Essential Information
+# Search essential information
 
 In this example, we explore how to search for essential information about nonprofit organizations using the Candid.org Essentials API. It covers the basics of querying the database for critical data points such as the organization's mission, program areas, and basic financials.
 
