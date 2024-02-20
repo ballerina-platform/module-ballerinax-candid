@@ -14,10 +14,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import candid.mock as _;
+
 import ballerina/log;
 import ballerina/os;
 import ballerina/test;
 
+configurable boolean isTestOnLiveServer = os:getEnv("IS_TEST_ON_LIVE_SERVER") == "true";
 configurable string apiKey = os:getEnv("ESSENTIALS_API_KEY");
 
 const SEARCH_TERM = "candid";
@@ -30,17 +33,23 @@ ApiKeysConfig apiKeyConfig = {
 
 Client essentials = test:mock(Client);
 
-@test:BeforeGroups {
-    value: ["candid"]
-}
-function initializeClientsForCandidServer() returns error? {
-    log:printInfo("Initializing client for Candid server");
-    essentials = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/essentials");
+@test:BeforeSuite
+function initializeClient() returns error? {
+    if isTestOnLiveServer {
+        log:printInfo("Initializing client for Candid server");
+        essentials = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/essentials");
+    } else {
+        log:printInfo("Initializing client for mock server");
+        essentials = check new (
+            apiKeyConfig = {
+                subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
+            },
+            serviceUrl = "http://localhost:9090/essentials"
+        );
+    }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testEssentialsV1() returns error? {
     log:printInfo("essentials -> testEssentialsV1()");
     Query query = {
@@ -60,9 +69,7 @@ function testEssentialsV1() returns error? {
     }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testEssentialsV2() returns error? {
     log:printInfo("essentials -> testEssentialsV2()");
     Query query = {
@@ -82,9 +89,7 @@ function testEssentialsV2() returns error? {
     }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testEssentialsV3() returns error? {
     log:printInfo("essentials -> testEssentialsV3()");
     V3Query query = {
@@ -99,9 +104,7 @@ function testEssentialsV3() returns error? {
     }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testEssentialsLookup() returns error? {
     log:printInfo("essentials -> testEssentialsLookup()");
     EssentialsLookupResponse result = check essentials->/lookup;
@@ -113,9 +116,7 @@ function testEssentialsLookup() returns error? {
     }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testEssentialsLookupFilterName() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterName()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME];
@@ -127,9 +128,7 @@ function testEssentialsLookupFilterName() returns error? {
     }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function  testEssentialsLookupFilterNameKeyOrValue() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterNameKeyOrValue()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME]/[KEY_OR_VALUE];

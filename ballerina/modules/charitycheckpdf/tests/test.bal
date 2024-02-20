@@ -14,11 +14,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import candid.mock as _;
+
 import ballerina/log;
 import ballerina/http;
 import ballerina/os;
 import ballerina/test;
 
+configurable boolean isTestOnLiveServer = os:getEnv("IS_TEST_ON_LIVE_SERVER") == "true";
 configurable string apiKey = os:getEnv("CHARITYCHECKPDF_API_KEY");
 
 const EIN = "13-1837418";
@@ -29,17 +32,23 @@ ApiKeysConfig apiKeyConfig = {
 
 Client charityCheckPDF = test:mock(Client);
 
-@test:BeforeGroups {
-    value: ["candid"]
-}
-function initializeClientsForCandidServer() returns error? {
-    log:printInfo("Initializing client for Candid server");
-    charityCheckPDF = check new (apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
+@test:BeforeSuite
+function initializeClient() returns error? {
+    if isTestOnLiveServer {
+        log:printInfo("Initializing client for Candid server");
+        charityCheckPDF = check new (apiKeyConfig, serviceUrl = "https://apidata.guidestar.org/charitycheckpdf");
+    } else {
+        log:printInfo("Initializing client for mock server");
+        charityCheckPDF = check new (
+            apiKeyConfig = {
+                subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
+            },
+            serviceUrl = "http://localhost:9090/charitycheckpdf"
+        );
+    }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testCharitycheckpdf() returns error? {
     log:printInfo("charityCheckPDF -> testCharitycheckpdf()");
     http:Response result = check charityCheckPDF->/v1/pdf/[EIN];

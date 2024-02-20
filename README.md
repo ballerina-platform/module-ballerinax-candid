@@ -3,7 +3,7 @@
 [![Build](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/ci.yml)
 [![Trivy](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/trivy-scan.yml)
 [![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/build-with-bal-test-graalvm.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/actions/workflows/build-with-bal-test-graalvm.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-candid.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/commits/master)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-candid.svg)](https://github.com/ballerina-platform/module-ballerinax-candid/commits/main)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/candid.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fcandid)
 
 [Candid](https://candid.org/) is a non-profit organization that provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Their mission is to connect people who want to change the world to the resources they need to do it.
@@ -29,11 +29,11 @@ To use the Candid.org Connector in Ballerina, you must first obtain an API key f
 ### Step 2: Request API access
 - **For a Trial Account:** If you're looking for trial access to explore Candid's API, complete the [form](https://info.candid.org/API-free-trial) to request trial access. Candid.org will review your request and get in touch with you regarding your trial API key.
 
-    <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/master/docs/setup/resources/1-trial-account-form.png alt="Candid API Access Form" width="50%">
+    <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/main/docs/setup/resources/1-trial-account-form.png alt="Candid API Access Form" width="50%">
 
 - **For a Production Account:** If you require access for production use, fill out the [form](https://info.candid.org/API-info-request) to initiate the process. Candid.org will contact you to discuss your needs and provide you with a production API key.
 
-    <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/master/docs/setup/resources/2-prod-account-form.png alt="Candid API Access Form" width="50%">
+    <img src=https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-candid/main/docs/setup/resources/2-prod-account-form.png alt="Candid API Access Form" width="50%">
 
 ## Quickstart
 
@@ -123,13 +123,13 @@ bal run
 
 ## Examples
 
-The `Candid` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-candid/tree/master/examples) to understand how to interact with the Candid.org API for tasks such as generating compliance reports, searching for essential nonprofit information, and retrieving detailed employer data. 
+The `Candid` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples) to understand how to interact with the Candid.org API for tasks such as generating compliance reports, searching for essential nonprofit information, and retrieving detailed employer data. 
 
-1. [Generate Charity Check PDF](https://github.com/ballerina-platform/module-ballerinax-candid/tree/master/examples/generate-charity-check-pdf) - Generate a detailed Charity Check PDF for a specified nonprofit organization using Candid.org's API.
+1. [Generate Charity Check PDF](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples/generate-charity-check-pdf) - Generate a detailed Charity Check PDF for a specified nonprofit organization using Candid.org's API.
 
-2. [Search Essential Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/master/examples/search-essential-information) - Search for and retrieve essential information about nonprofit organizations through the Candid.org Essentials API.
+2. [Search Essential Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples/search-essential-information) - Search for and retrieve essential information about nonprofit organizations through the Candid.org Essentials API.
 
-3. [Get Employer Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/master/examples/get-employer-information) - Obtain comprehensive employer information for nonprofit organizations using the Candid.org Premier API.
+3. [Get Employer Information](https://github.com/ballerina-platform/module-ballerinax-candid/tree/main/examples/get-employer-information) - Obtain comprehensive employer information for nonprofit organizations using the Candid.org Premier API.
 
 ## Issues and projects
 

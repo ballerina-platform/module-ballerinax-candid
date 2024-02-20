@@ -14,11 +14,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import candid.mock as _;
+
 import ballerina/log;
 import ballerina/http;
 import ballerina/os;
 import ballerina/test;
 
+configurable boolean isTestOnLiveServer = os:getEnv("IS_TEST_ON_LIVE_SERVER") == "true";
 configurable string apiKey = os:getEnv("PREMIER_API_KEY");
 
 const EIN = "13-1837418";
@@ -29,35 +32,37 @@ ApiKeysConfig apiKeyConfig = {
 
 Client premier = test:mock(Client);
 
-@test:BeforeGroups {
-    value: ["candid"]
-}
-function initializeClientsForCandidServer() returns error? {
-    log:printInfo("Initializing client for Candid server");
-    premier = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/premier");
+@test:BeforeSuite
+function initializeClient() returns error? {
+    if isTestOnLiveServer {
+        log:printInfo("Initializing client for Candid server");
+        premier = check new (apiKeyConfig, serviceUrl = "https://api.candid.org/premier");
+    } else {
+        log:printInfo("Initializing client for mock server");
+        premier = check new (
+            apiKeyConfig = {
+                subscriptionKey: "6006e88b7fc2e0c31fbcb744cca10cafa280341758cd1db45fc1b29b05305dc0"
+            },
+            serviceUrl = "http://localhost:9090/premier"
+        );
+    }
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testPremierV1Propdf() returns error? {
     log:printInfo("premier -> testPremierV1Propdf()");
     http:Response result = check premier->/v1/propdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testPremierV1ftapdf() returns error? {
     log:printInfo("premier -> testPremierV1ftapdf()");
     http:Response result = check premier->/v1/ftapdf/[EIN];
     test:assertEquals(result.getContentType(), "application/pdf");
 }
 
-@test:Config {
-    groups: ["candid"]
-}
+@test:Config
 function testPremierV3() returns error? {
     log:printInfo("premier -> testPremierV3()");
     V3PublicProfile result = check premier->/v3/[EIN];
