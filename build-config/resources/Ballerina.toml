@@ -9,3 +9,6 @@ repository = "https://github.com/ballerina-platform/module-ballerinax-candid"
 icon = "icon.png"
 license = ["Apache-2.0"]
 distribution = "2201.8.0"
+
+[build-options]
+observabilityIncluded = true

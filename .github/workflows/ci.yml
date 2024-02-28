@@ -1,4 +1,4 @@
-name: CI
+name: Build
 
 on:
   push:
@@ -16,4 +16,3 @@ jobs:
     secrets: inherit
     with:
       repo-name: module-ballerinax-candid
-      additional-test-flags: -x test

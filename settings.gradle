@@ -41,8 +41,10 @@ plugins {
 rootProject.name = 'module-ballerinax-candid'
 
 include ':candid-ballerina'
+include ':candid-examples'
 
 project(':candid-ballerina').projectDir = file("ballerina")
+project(':candid-examples').projectDir = file("examples")
 
 gradleEnterprise {
     buildScan {

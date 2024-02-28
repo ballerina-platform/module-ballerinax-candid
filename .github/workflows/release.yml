@@ -14,4 +14,6 @@ jobs:
     with:
       package-name: candid
       package-org: ballerinax
-      additional-release-flags: -x test
+      additional-build-flags: "-x :candid-examples:build"
+      additional-release-flags: "-x :candid-examples:build"
+      additional-publish-flags: "-x :candid-examples:build"
