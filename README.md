@@ -95,7 +95,6 @@ The following Ballerina program generates a PDF report to validate nonprofit sta
 
 ```ballerina
 http:Response|error result = charitycheckpdf->/v1/pdf/["EMP-ID-NUM"];
-    return result;
 ```
 
 #### Essentials API
