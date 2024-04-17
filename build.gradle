@@ -59,7 +59,6 @@ def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
 task build {
     dependsOn(':candid-ballerina:build')
-    dependsOn(':candid-examples:build')
 }
 
 release {
