@@ -59,7 +59,8 @@ def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
 task build {
     dependsOn(':candid-ballerina:build')
-    dependsOn(':candid-examples:build')
+    // TODO: Re-Enable the example build once the issue(https://github.com/ballerina-platform/ballerina-library/issues/6135) is fixed.
+    // dependsOn(':candid-examples:build')
 }
 
 release {
