@@ -61,8 +61,8 @@ function testPremierV1ftapdf() returns error? {
 function testPremierV3() returns error? {
     log:printInfo("premier -> testPremierV3()");
     V3PublicProfile result = check premier->/v3/[EIN];
-    V3PublicProfile_data? data = result?.data;
-    if data is V3PublicProfile_data {
+    V3PublicProfileData? data = result?.data;
+    if data is V3PublicProfileData {
         Summary3? summary = data?.summary;
         if summary is Summary3 {
             test:assertEquals(summary?.ein, EIN);
