@@ -48,13 +48,13 @@ function initializeClient() returns error? {
 function testEssentialsV1() returns error? {
     log:printInfo("essentials -> testEssentialsV1()");
     Query query = {
-        search_terms: SEARCH_TERM
+        searchTerms: SEARCH_TERM
     };
     V1EssentialsResponse result = check essentials->/v1.post(query);
-    V1EssentialsResponse_data? data = result?.data;
-    if data is V1EssentialsResponse_data {
-        V1EssentialsResponse_data_hits[]? hits = data?.hits;
-        if hits is V1EssentialsResponse_data_hits[] {
+    V1EssentialsResponseData? data = result?.data;
+    if data is V1EssentialsResponseData {
+        V1EssentialsResponseDataHits[]? hits = data?.hits;
+        if hits is V1EssentialsResponseDataHits[] {
             test:assertEquals(hits.length(), 25);
         } else {
             test:assertFail();
@@ -68,13 +68,13 @@ function testEssentialsV1() returns error? {
 function testEssentialsV2() returns error? {
     log:printInfo("essentials -> testEssentialsV2()");
     Query query = {
-        search_terms: SEARCH_TERM
+        searchTerms: SEARCH_TERM
     };
     V2EssentialsResponse result = check essentials->/v2.post(query);
-    V2EssentialsResponse_data? data = result?.data;
-    if data is V2EssentialsResponse_data {
-        V2EssentialsResponse_data_hits[]? hits = data?.hits;
-        if hits is V2EssentialsResponse_data_hits[] {
+    V2EssentialsResponseData? data = result?.data;
+    if data is V2EssentialsResponseData {
+        V2EssentialsResponseDataHits[]? hits = data?.hits;
+        if hits is V2EssentialsResponseDataHits[] {
             test:assertEquals(hits.length(), 25);
         } else {
             test:assertFail();
@@ -88,11 +88,11 @@ function testEssentialsV2() returns error? {
 function testEssentialsV3() returns error? {
     log:printInfo("essentials -> testEssentialsV3()");
     V3Query query = {
-        search_terms: SEARCH_TERM
+        searchTerms: SEARCH_TERM
     };
     V3EssentialsResponse result = check essentials->/v3.post(query);
-    V3EssentialsResponse_hits[]? hits = result?.hits;
-    if hits is V3EssentialsResponse_hits[] {
+    V3EssentialsResponseHits[]? hits = result?.hits;
+    if hits is V3EssentialsResponseHits[] {
         test:assertEquals(hits.length(), 25);
     } else {
         test:assertFail();
@@ -115,8 +115,8 @@ function testEssentialsLookup() returns error? {
 function testEssentialsLookupFilterName() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterName()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME];
-    EssentialsFilteredLookupResponse_data[]? data = result?.data;
-    if data is EssentialsFilteredLookupResponse_data[] {
+    EssentialsFilteredLookupResponseData[]? data = result?.data;
+    if data is EssentialsFilteredLookupResponseData[] {
         test:assertTrue(data.some(val => val?.'key == KEY_OR_VALUE));
     } else {
         test:assertFail();
@@ -127,8 +127,8 @@ function testEssentialsLookupFilterName() returns error? {
 function  testEssentialsLookupFilterNameKeyOrValue() returns error? {
     log:printInfo("essentials -> testEssentialsLookupFilterNameKeyOrValue()");
     EssentialsFilteredLookupResponse result = check essentials->/lookup/[FILTER_NAME]/[KEY_OR_VALUE];
-    EssentialsFilteredLookupResponse_data[]? data = result?.data;
-    if data is EssentialsFilteredLookupResponse_data[] {
+    EssentialsFilteredLookupResponseData[]? data = result?.data;
+    if data is EssentialsFilteredLookupResponseData[] {
         test:assertTrue(data.some(val => val?.'key == KEY_OR_VALUE));
     } else {
         test:assertFail();

@@ -26,7 +26,7 @@ essentials:Client essentials = check new (apiKeyConfig);
 
 function getV3Essesntials() returns essentials:V3EssentialsResponse|error {
     essentials:V3Query query = {
-        search_terms: "candid"
+        searchTerms: "candid"
     };
     essentials:V3EssentialsResponse result = check essentials->/v3.post(query);
     return result;
