@@ -1,17 +1,16 @@
-## Package Overview
+## Overview
 
-[Candid](https://candid.org/) is a non-profit organization that provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Their mission is to connect people who want to change the world to the resources they need to do it.
+[Candid](https://candid.org/) provides a comprehensive database of information about nonprofits, foundations, grantmakers, and philanthropists. Its mission is to connect people who want to change the world to the resources they need.
 
-This Ballerina Candid connector is designed to interface with Candid.org's API, enabling developers to access Candid's resources programmatically. It supports various operations, such as searching for nonprofit organizations, accessing grant data, and retrieving information about philanthropic trends and insights.
+The Candid connector is designed to interface with Candid.org's API, enabling developers to access Candid's resources programmatically. It supports searching for nonprofit organizations, accessing grant data, and retrieving philanthropic trends and insights.
 
-Currently, the following Candid APIs are supported through this module
+### Key Features
 
-- **Charity Check PDF API**
-  - The Charity Check PDF API is a powerful tool that allows to download formatted Charity Check PDF reports for individual nonprofits.
-- **Essentials API**
-  - The Essentials API is a lightweight API that provides basic information about nonprofits, such as their name, address, EIN, and mission statement. It is ideal for applications that need to quickly and easily identify and access basic nonprofit data.
-- **Premier API**
-  - The Premier API is a more comprehensive API that provides access to a wider range of nonprofit data, including financial information, staffing data, grantmaking data, and DEI data. It is ideal for applications that need to deep dive into the data of individual nonprofits or perform complex analyses of nonprofit data.
+- Access comprehensive nonprofit and philanthropy data
+- Support for Charity Check PDF API for compliance reports
+- Lightweight access to basic nonprofit information via Essentials API
+- Detailed financial, staffing, and DEI data via Premier API
+- Streamlined integration with Candid.org's resource database
 
 ## Setup guide
 To use the Candid.org Connector in Ballerina, you must first obtain an API key from Candid.org.
